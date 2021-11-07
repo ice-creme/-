@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Img20201204165306, 'C:/Users/夏目家的猫/Desktop/IMG20201204165306.jpg')</l>
+<l>create_bar_code_model ([], [], BarCodeHandle)</l>
+<l>find_bar_code (Img20201204165306, SymbolRegions, BarCodeHandle, 'auto', DecodedDataStrings)</l>
+<l>smallest_rectangle1 (SymbolRegions, Row1, Column1, Row2, Column2)</l>
+<l>dev_set_draw ('margin')</l>
+<l>dev_set_line_width (3)</l>
+<l>dev_display (Img20201204165306)</l>
+<l>dev_display (SymbolRegions)</l>
+<l>dev_disp_text (DecodedDataStrings,'image',Row2,Column1,'black', [], [])</l>
+<l>clear_bar_code_model (BarCodeHandle)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

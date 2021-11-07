@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Screenshot2020081014034861, 'D:/个人文件/qq记录/1182644072/FileRecv/MobileFile/Screenshot_2020-08-10-14-03-48-61.png')</l>
+<l>create_data_code_2d_model ('QR Code', [], [], DataCodeHandle)</l>
+<l>find_data_code_2d (Screenshot2020081014034861, SymbolXLDs, DataCodeHandle, [], [], ResultHandles, DecodedDataStrings)</l>
+<l>dev_display (Screenshot2020081014034861)</l>
+<l>dev_display (SymbolXLDs)</l>
+<l>disp_message (200000, DecodedDataStrings, 'window', 12, 12, 'black', 'true')</l>
+<l>dev_disp_text (DecodedDataStrings, 'window', 'top', 'left', 'black', [], [])</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

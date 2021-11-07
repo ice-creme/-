@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Bf5rzU0hWju4uoVi52, 'C:/Users/夏目家的猫/Desktop/BF`5RZ`U0H{WJU4UO$VI5$2.jpg')</l>
+<l>rgb1_to_gray (Bf5rzU0hWju4uoVi52, GrayImage)</l>
+<l>threshold (GrayImage, Regions, 54, 193)</l>
+<l>connection (Regions, ConnectedRegions)</l>
+<l>select_shape (ConnectedRegions, SelectedRegions, 'area', 'and', 45.62, 2089.42)</l>
+<l>select_shape (SelectedRegions, SelectedRegions1, ['area','row'], 'and', [0,292.88], [2000.01,1000])</l>
+<l>select_shape (SelectedRegions1, SelectedRegions2, ['area','row','width'], 'and', [0,292.88,0], [2000,1000,82.755])</l>
+<l>*sort_region (SelectedRegions2, SortedRegions, 'character', 'true', 'row')</l>
+<l>*select_obj (SortedRegions, ObjectSelected8, 8)</l>
+<l>*select_obj (SortedRegions, ObjectSelected10, 10)</l>
+<l>*select_obj (SortedRegions, ObjectSelected13, 13)</l>
+<l>*select_obj (SortedRegions, ObjectSelected15, 15)</l>
+<l>*union2 (ObjectSelected13, ObjectSelected15, RegionUnion1)</l>
+<c></c>
+<l>*read_ocr_class_mlp ('Industrial_0-9A-Z_NoRej.omc', OCRHandle)</l>
+<l>*do_ocr_multi_class_mlp (SelectedRegions2, GrayImage, OCRHandle, Class, Confidence)</l>
+<c></c>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

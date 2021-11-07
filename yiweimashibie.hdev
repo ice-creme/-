@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Ean13ToPreprocess04, 'C:/Users/夏目家的猫/Desktop/新建文件夹 (2)/ean13_to_preprocess_04.png')</l>
+<l>scale_image (Ean13ToPreprocess04, ImageScaled, 36.4286, -109)</l>
+<l>create_bar_code_model ([], [], BarCodeHandle)</l>
+<l>find_bar_code (ImageScaled, SymbolRegions, BarCodeHandle, 'auto', DecodedDataStrings)</l>
+<l>disp_message (200000, DecodedDataStrings, 'window', 12, 12, 'black', 'true')</l>
+<c></c>
+<l>read_image (Ean13ToPreprocess05, 'C:/Users/夏目家的猫/Desktop/新建文件夹 (2)/ean13_to_preprocess_05.png')</l>
+<l>find_bar_code (Ean13ToPreprocess05, SymbolRegions1, BarCodeHandle, 'auto', DecodedDataStrings1)</l>
+<l>dev_set_draw ('margin')</l>
+<l>dev_display (Ean13ToPreprocess05)</l>
+<l>dev_display (SymbolRegions1)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

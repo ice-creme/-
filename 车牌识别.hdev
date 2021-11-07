@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<c>*采集图像</c>
+<l>read_image (Image, 'C:/Users/夏目家的猫/Desktop/Cache_-50b940a8b298e8c7..jpg')</l>
+<l>dev_clear_window ()</l>
+<l>get_image_size (Image, Width, Height)</l>
+<l>dev_open_window (0, 0, Width/3, Height/3, 'black', WindowID)</l>
+<c>*车牌定位及矫正</c>
+<l>decompose3 (Image, R, G, B)</l>
+<l>trans_from_rgb (R, G, B, ImageResult1, ImageResult2, ImageResult3, 'hsv')</l>
+<l>threshold (ImageResult2, Regions, 135, 255)</l>
+<l>connection (Regions, ConnectedRegions)</l>
+<l>select_shape (ConnectedRegions, SelectedRegions, 'area', 'and', 1867.92, 9150.94)</l>
+<l>union1 (SelectedRegions, RegionUnion)</l>
+<l>dilation_rectangle1 (RegionUnion, RegionDilation, 11, 11)</l>
+<l>fill_up (RegionDilation, RegionFillUp)</l>
+<l>orientation_region (RegionFillUp, Phi)</l>
+<l>area_center (RegionFillUp, Area, Row, Column)</l>
+<l>vector_angle_to_rigid (Row, Column, Phi, Row, Column, rad(180), HomMat2D)</l>
+<l>affine_trans_image (Image, ImageAffineTrans, HomMat2D, 'constant', 'false')</l>
+<l>affine_trans_region (RegionFillUp, RegionAffineTrans, HomMat2D, 'nearest_neighbor')</l>
+<l>reduce_domain (ImageAffineTrans, RegionAffineTrans, ImageReduced)</l>
+<c>*字符分割</c>
+<l>rgb1_to_gray (ImageReduced, GrayImage)</l>
+<l>invert_image (GrayImage, ImageInvert)</l>
+<l>threshold (GrayImage, Regions1, 149, 255)</l>
+<l>connection (Regions1, ConnectedRegions1)</l>
+<l>select_shape (ConnectedRegions1, SelectedRegions1, ['area','column','width'], 'and', [78.47,340.33,0], [684.31,986.31,25.09])</l>
+<c>*识别</c>
+<l>read_ocr_class_mlp ('Industrial_0-9A-Z_NoRej.omc', OCRHandle)</l>
+<l>do_ocr_multi_class_mlp (SelectedRegions1, ImageInvert, OCRHandle, Class, Confidence)</l>
+<c>*显示</c>
+<l>smallest_rectangle1 (SelectedRegions1, Row11, Column1, Row2, Column21)</l>
+<l>disp_message (WindowID, Class, 'image', Row2, Column1, 'green', 'false')</l>
+<l>clear_ocr_class_mlp (OCRHandle)</l>
+<l>dev_update_window ('on')</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Screenshot2020081014034861, 'D:/个人文件/qq记录/1182644072/FileRecv/MobileFile/Screenshot_2020-08-10-14-03-48-61.png')</l>
+<l>*read_image (Ecc200ToPreprocess004, 'C:/Users/夏目家的猫/Desktop/ecc200_to_preprocess_004.png')</l>
+<l>create_data_code_2d_model ('Data Matrix ECC 200', [], [], DataCodeHandle)</l>
+<c>*中值滤波</c>
+<l>*median_image (Ecc200ToPreprocess004, ImageMedian, 'square', 1, 'mirrored')</l>
+<l>*find_data_code_2d (ImageMedian, SymbolXLDs, DataCodeHandle, [], [], ResultHandles, DecodedDataStrings)</l>
+<l>*dev_display (Ecc200ToPreprocess004)</l>
+<l>*dev_display (SymbolXLDs)</l>
+<c></c>
+<c>*均值滤波</c>
+<l>*mean_image (Ecc200ToPreprocess004, ImageMean, 2, 2)</l>
+<l>*find_data_code_2d (ImageMean, SymbolXLDs, DataCodeHandle, [], [], ResultHandles, DecodedDataStrings)</l>
+<c></c>
+<c>*高斯滤波</c>
+<l>gauss_filter (Screenshot2020081014034861, ImageGauss, 5)</l>
+<l>find_data_code_2d (ImageGauss, SymbolXLDs, DataCodeHandle, [], [], ResultHandles, DecodedDataStrings)</l>
+<l>dev_display (Screenshot2020081014034861)</l>
+<l>dev_display (SymbolXLDs)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image, 'C:/Users/夏目家的猫/Desktop/二维码.png')</l>
+<l>create_data_code_2d_model ('QR Code', [], [], DataCodeHandle)</l>
+<l>find_data_code_2d (Image, SymbolXLDs, DataCodeHandle, [], [], ResultHandles, DecodedDataStrings)</l>
+<l>dev_display(Image)</l>
+<l>dev_display (SymbolXLDs)</l>
+<l>disp_message (200000, DecodedDataStrings, 'window', 12, 12, 'black', 'true')</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

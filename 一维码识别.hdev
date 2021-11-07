@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Code12801, 'C:/Users/夏目家的猫/Desktop/code12801.png')</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle)</l>
+<l>dev_set_part (0, 0, 511, 511)</l>
+<c>*创建条码模型</c>
+<l>create_bar_code_model ([], [], BarCodeHandle)</l>
+<c>*识别条码</c>
+<l>find_bar_code (Code12801, SymbolRegions, BarCodeHandle, 'auto', DecodedDataStrings)</l>
+<l>smallest_rectangle1 (SymbolRegions, Row1, Column1,Row2, Column2)</l>
+<c>*显示</c>
+<l>dev_set_draw ('margin')</l>
+<l>dev_set_line_width (3)</l>
+<l>dev_display (Code12801)</l>
+<l>dev_display (SymbolRegions)</l>
+<l>dev_disp_text (DecodedDataStrings,'image',Row2,Column1,'black', [], [])</l>
+<c>*清除模型</c>
+<l>clear_bar_code_model (BarCodeHandle)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

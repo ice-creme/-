@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Pellets, 'C:/Users/夏目家的猫/Desktop/新建文件夹 (2)/pellets.png')</l>
+<l>threshold (Pellets, Regions, 104, 204)</l>
+<l>erosion_circle (Regions, RegionErosion, 9)</l>
+<l>connection (RegionErosion, ConnectedRegions)</l>
+<l>dilation_circle (ConnectedRegions, RegionDilation, 9)</l>
+<l>select_shape (RegionDilation, SelectedRegions, ['column1','area'], 'and', [15.97,798.36], [500,5000])</l>
+<l>count_obj (SelectedRegions, Number)</l>
+<l>dev_disp_text ('气弹的个数是：'+Number+'个', 'window', 'top', 'left', 'black', [], [])</l>
+<c>*</c>
+<l>dev_clear_window ()</l>
+<c>*</c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
